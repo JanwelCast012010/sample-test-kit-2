@@ -66,8 +66,8 @@ const registerSchema = yup.object({
         fontSize: 60,
         fontFamily: 'poppins-bold',
         textAlign:'center', 
-        marginTop: 50,
-        marginLeft: -100,
+        marginTop: 90,
+        marginLeft: -80,
         color: '#DD3453'
       }}>Create
       </Text>
@@ -75,8 +75,8 @@ const registerSchema = yup.object({
         fontSize: 60,
         fontFamily: 'poppins-bold',
         textAlign:'center', 
-        marginTop: -105,
-        marginLeft: 220,
+        marginTop: -90,
+        marginLeft: 180,
         color: '#FDC307'
       }}>An
       </Text>
@@ -89,11 +89,11 @@ const registerSchema = yup.object({
       }}>Account
       </Text>
       <Text style={{
-        fontSize: 12,
+        fontSize: 15,
         fontFamily: 'poppins-regular',
         textAlign:'center', 
         marginTop:-20,
-        color: '#90CCFE'
+        color: '#FDC307'
       }}> Please signup to continue
       </Text>
       <ScrollView>

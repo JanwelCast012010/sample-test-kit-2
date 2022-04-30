@@ -15,7 +15,7 @@ export default function HomeNavigator() {
     <Stack.Navigator
     initialRouteName="Landing"
     screenOptions= {({navigation})=> ({
-      title:"sample",
+      title:"Agenda",
       headerLeft: () => (
         <TouchableOpacity
           style={{

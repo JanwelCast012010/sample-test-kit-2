@@ -14,7 +14,7 @@ export default function TodoList() {
     container: {
       flex: 1,
       //background
-      backgroundColor: '#ffffff',
+      backgroundColor: '#000000',
       justifyContent: 'center',
       paddingHorizontal: 20,
     },
