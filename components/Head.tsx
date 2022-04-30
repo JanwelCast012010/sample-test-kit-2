@@ -4,21 +4,22 @@ import {Platform, StyleSheet, View,Text } from 'react-native';
 export default function Head(){
     return(
         <View style= {styles.Head}>
-        <Text style={styles.title}>My Todos</Text>
+        <Text style={styles.title}>My Todo's</Text>
         </View>
     )
 }
 const styles= StyleSheet.create({
     Head: {
-        backgroundColor:'#ff00cc',
-        paddingHorizontal:96,
-
+        backgroundColor:'#E13259',
+        paddingHorizontal:92,
+        marginTop:200,
+        justifyContent: 'center',
     },
     title:{
         fontSize: 40,
         fontFamily: 'poppins-bold',
         textAlign:'center', 
-        marginTop: 60,
+        marginTop: 10,
         color: '#ffffff'
     }
 })

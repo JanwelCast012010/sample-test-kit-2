@@ -168,8 +168,8 @@ const registerSchema = yup.object({
           flex: 0,
           marginBottom: 20
         }}>
-          <Text style={styles.textStyle
-          }>Confirm Password
+          <Text style={styles.textStyle} >
+            Confirm Password
         </Text>
         <TextInput
           style={styles.input}

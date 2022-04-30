@@ -7,6 +7,7 @@ import { HomeScreen, LandingScreen } from "../screens/Home";
 import {TouchableOpacity} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import DefaultColor from "../constants/Colors";
+import { color } from "react-native-reanimated";
 ///constants/Colors.ts
 const Stack = createStackNavigator<HomeParamList>();
 

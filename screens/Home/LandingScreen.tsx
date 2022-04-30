@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, View,Text, } from 'react-native';
+import { FlatList, StyleSheet, View,Text,Alert , TouchableWithoutFeedback,Keyboard} from 'react-native';
 import Head from ".././../components/Head";
 import TodoItem from ".././../components/TodoItem";
+import AddTodo from '../../components/AddTodo';
+import SandBox from '../../components/SandBox';
 
 export default function LandingScreen() {
   const [todos,setTodos]= useState([
-    {text: 'buy coffee', key:'1'},
-    {text: 'create an app', key:'2'},
-    {text: 'play on the switch', key:'3'}
+    {text: 'codings', key:'1'},
+    {text: 'edit', key:'2'},
+    {text: 'tired', key:'3'}
 
   ]);
 
@@ -16,38 +18,64 @@ export default function LandingScreen() {
       return prevTodos.filter(todo => todo.key != key);
     });
   }
+
+  const submitHandler = (text:any) => {
+
+    if(text.length > 3) {
+    setTodos((prevTodos) => {
+    return[
+    {text: text,key: Math.random().toString()},
+    ...prevTodos
+    ];
+  });
+
+}else {
+  Alert.alert('OOPS!', 'Todos must be over 3 chars long', [
+    {text:'Ok', onPress:() => console.log('alert closed')}
+  ]);
+}
+
+ }
+
   return (
-    <View style={styles.container}>
-   <Head/>
-    <View style={styles.content}>
-      {  } 
-     <View style={styles.list}>
-       <FlatList
-       data={todos}
-       renderItem={({item}) => (
-         <TodoItem item={item} pressHandler={pressHandler} />
+    //<SandBox/>
+    <TouchableWithoutFeedback onPress={() =>{
+       Keyboard.dismiss();
+       console.log('dismissed keyboard')
+     }}>
+     <View style={styles.container}>
+    <Head/>
+     <View style={styles.content}>
+       < AddTodo submitHandler={submitHandler}/>
+      <View style={styles.list}>
+        <FlatList
+        data={todos}
+      renderItem={({item}) => (
+  <TodoItem item={item} pressHandler={pressHandler} />
 
-       )}
-       />
+        )}
+        />
+        </View>
        </View>
-      </View>
 
-    </View>
+     </View>
+     </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff000',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   content: {
-    padding:40,
+    backgroundColor: '#ffffff',
+
   },
   list: {
-    marginTop:80,
+    marginTop:1,
   }
   
 })

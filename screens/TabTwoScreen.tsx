@@ -17,9 +17,6 @@ export default function TabTwoScreen() {
     <Header />
     <Formlogin />
     <Footer />
-
-
-   
     </View>
   );
 }
