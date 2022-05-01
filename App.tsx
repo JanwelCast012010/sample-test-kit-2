@@ -7,6 +7,8 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
 import 'react-native-gesture-handler';
+import TabTwoScreen from "./screens/TabTwoScreen";
+import TabOnecreen from "./screens/TabOneScreen";
 
 
 export default function App() {
@@ -18,7 +20,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        <Navigation colorScheme={colorScheme}/>
         <StatusBar />
       </SafeAreaProvider>
     );
