@@ -5,8 +5,6 @@ import Header from "../components/Login/Header";
 import Formlogin from "../components/Login/Formlogin";
 import Footer from "../components/Login/Footer";
 import EditScreenInfo from '../components/EditScreenInfo';
-//import {useHistory} from "react-router-dom";
-//import { Text, View } from '../components/Themed';
 
 export default function TabTwoScreen() {
   //Import {useHistory} from "react-router-dom";

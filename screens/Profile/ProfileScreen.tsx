@@ -32,15 +32,15 @@ const ProfileScreen =() => {
      <View style={styles.userInfoSection}>
      <View style={styles.row}>
        <Icon name= "map-marker-radius" size ={20} />
-       <Text style={{color: "#7777777", marginLeft: 20 }}>Binangonan, Rizal</Text>
+       <Text style={{color: "#777777", marginLeft: 20 }}>Binangonan, Rizal</Text>
      </View>
      <View style={styles.row}>
        <Icon name= "phone" size ={20}/>
-       <Text style={{color: "#7777777", marginLeft: 20 }}>09533722529</Text>
+       <Text style={{color: "#777777", marginLeft: 20 }}>09533722529</Text>
      </View>
      <View style={styles.row}>
        <Icon name= "email" size ={20}/>
-       <Text style={{color: "#7777777", marginLeft: 20 }}>janweljigycastillo20@gmail.com</Text>
+       <Text style={{color: "#777777", marginLeft: 20 }}>janweljigycastillo20@gmail.com</Text>
      </View>
      </View>
      <View style={styles.infoBoxWrapper}>

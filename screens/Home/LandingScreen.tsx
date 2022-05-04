@@ -7,9 +7,9 @@ import SandBox from '../../components/SandBox';
 
 export default function LandingScreen() {
   const [todos,setTodos]= useState([
-    {text: 'codings', key:'1'},
-    {text: 'edit', key:'2'},
-    {text: 'tired', key:'3'}
+    {text: 'Codings', key:'1'},
+    {text: 'Feed the cat', key:'2'},
+    {text: 'Exercise every morning', key:'3'}
 
   ]);
 

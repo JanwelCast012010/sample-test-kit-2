@@ -9,11 +9,6 @@ export default function TodoItem({item,pressHandler}: {item:any, pressHandler:an
               
              <Text style={styles.itemText}>{item.text}</Text>
              </View>
-             <MaterialIcons style= {styles.edit} 
-             name ='edit' 
-             size={30} 
-             color={'#E13257'}  />
-             
              <MaterialIcons style= {styles.icon} 
              name ='delete' 
              size={30} 
@@ -39,13 +34,7 @@ const styles = StyleSheet.create({
     },
     icon:{
         marginLeft: 250,
-        marginTop: -30,
-
-    },
-    edit:{
-        marginLeft: 220,
-        marginTop: -34,
+        marginTop: -33,
 
     }
-    
 });
