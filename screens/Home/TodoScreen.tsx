@@ -11,16 +11,18 @@ import {RootStackParamList} from '../../types';
 import { RouteProp,useRoute } from "@react-navigation/native";
 
 type Iroute = {
-  "params": RootStackParamList['Landing'];
+  "params": RootStackParamList['TodoList'];
 }
-export default function LandingScreen() {
+export default function TodoScreen() {
   const [todos, setTodos] = useState<Array<Todo> | null>(null);
 
 
   const route = useRoute<RouteProp<Iroute, "params">>();
   const todo = route.params.todo;
-  const index = route.params.index
-  
+  const index = route.params.index;
+
+  const [Title, setTitle] = useState<string>(todo.Title);
+    
   const retrieveData =async () => {
       const todoList = await getData('todoList');
       if (todoList) {

@@ -2,8 +2,7 @@ import * as React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
 import { ProfileParamList} from '../types';
 import TabOneScreen from "../screens/TabOneScreen";
-import TodoList from "../screens/TodoList";
-import { HomeScreen, LandingScreen } from "../screens/Home";
+import { HomeScreen } from "../screens/Home";
 import {TouchableOpacity} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import DefaultColor from "../constants/Colors";
@@ -14,7 +13,7 @@ const Stack = createStackNavigator<ProfileParamList>();
 export default function ProfileNavigator() {
   return (
     <Stack.Navigator
-    initialRouteName="Landing"
+    initialRouteName="ProfileList"
     screenOptions= {({navigation})=> ({
       title:"Profile",
       headerLeft: () => (

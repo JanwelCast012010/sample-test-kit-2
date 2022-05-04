@@ -1,13 +1,21 @@
 import React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
+import {Button} from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
+import {RootStackParamList} from '../../types';
+
 
 
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-    
-    </View>
+   <Button
+      title ={"Add New Todo"}
+      onPress={ () => navigation.navigate ('Todo')}
+  />
+</View>
   );
 }
 

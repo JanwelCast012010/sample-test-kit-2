@@ -2,13 +2,12 @@ import * as React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
 import {RootStackParamList} from '../types';
 import TabOneScreen from "../screens/TabOneScreen";
-import TodoList from "../screens/TodoList";
 import { HomeScreen } from "../screens/Home";
-import LandingScreen from "../screens/Home/LandingScreen";
 import {TouchableOpacity} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import DefaultColor from "../constants/Colors";
 import { color } from "react-native-reanimated";
+import TodoScreen from "../screens/Home/TodoScreen";
 ///constants/Colors.ts
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -37,9 +36,14 @@ export default function HomeNavigator() {
     
         })}
     >
+      <Stack.Screen 
+      name="Landing"
+       component={HomeScreen} 
+       />
+
       <Stack.Screen
-       name="Landing"
-       component={LandingScreen} 
+       name="TodoList"
+       component={TodoScreen} 
        />
     
     </Stack.Navigator>
