@@ -18,12 +18,13 @@ export type RootStackParamList = {
 Home: undefined;
 Todo:undefined;
 Profile: undefined;
-};
- 
-export type HomeParamList= {
 Landing:{index: number; todo: Todo; };
 TodoList:undefined;
 TodoDetail:undefined;
+};
+ 
+export type HomeParamList= {
+
 
 }
 export type ProfileParamList= {

@@ -7,11 +7,11 @@ import {Todo} from '../../Models/Todo';
 import { getData, storeData } from '../../Database/StoreData';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
-import {HomeParamList} from '../../types';
+import {RootStackParamList} from '../../types';
 import { RouteProp,useRoute } from "@react-navigation/native";
 
 type Iroute = {
-  "params": HomeParamList['Landing'];
+  "params": RootStackParamList['Landing'];
 }
 export default function LandingScreen() {
   const [todos, setTodos] = useState<Array<Todo> | null>(null);

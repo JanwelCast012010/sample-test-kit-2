@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeParamList} from '../types';
+import {RootStackParamList} from '../types';
 import TabOneScreen from "../screens/TabOneScreen";
 import TodoList from "../screens/TodoList";
 import { HomeScreen } from "../screens/Home";
@@ -10,7 +10,7 @@ import {Ionicons} from '@expo/vector-icons';
 import DefaultColor from "../constants/Colors";
 import { color } from "react-native-reanimated";
 ///constants/Colors.ts
-const Stack = createStackNavigator<HomeParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function HomeNavigator() {
   return (
