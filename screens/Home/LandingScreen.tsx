@@ -1,41 +1,70 @@
-import React, { useState } from 'react';
-import { FlatList, StyleSheet, View,Text,Alert , TouchableWithoutFeedback,Keyboard} from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { FlatList, StyleSheet, View,Text,Alert , TouchableWithoutFeedback,Keyboard,TouchableOpacity, ScrollView} from 'react-native';
 import Head from ".././../components/Head";
-import TodoItem from ".././../components/TodoItem";
 import AddTodo from '../../components/AddTodo';
 import SandBox from '../../components/SandBox';
+import {Todo} from '../../Models/Todo';
+import { getData, storeData } from '../../Database/StoreData';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native';
+import {HomeParamList} from '../../types';
+import { RouteProp,useRoute } from "@react-navigation/native";
 
-export default function LandingScreen() {
-  const [todos,setTodos]= useState([
-    {text: 'Codings', key:'1'},
-    {text: 'Feed the cat', key:'2'},
-    {text: 'Exercise every morning', key:'3'}
-
-  ]);
-
-  const pressHandler = (key:any) => {
-    setTodos((prevTodos) => {
-      return prevTodos.filter(todo => todo.key != key);
-    });
-  }
-
-  const submitHandler = (text:any) => {
-
-    if(text.length > 3) {
-    setTodos((prevTodos) => {
-    return[
-    {text: text,key: Math.random().toString()},
-    ...prevTodos
-    ];
-  });
-
-}else {
-  Alert.alert('OOPS!', 'Todos must be over 3 chars long', [
-    {text:'Ok', onPress:() => console.log('alert closed')}
-  ]);
+type Iroute = {
+  "params": HomeParamList['Landing'];
 }
+export default function LandingScreen() {
+  const [todos, setTodos] = useState<Array<Todo> | null>(null);
 
- }
+
+  const route = useRoute<RouteProp<Iroute, "params">>();
+  const todo = route.params.todo;
+  const index = route.params.index
+  
+  const retrieveData =async () => {
+      const todoList = await getData('todoList');
+      if (todoList) {
+          const json = JSON.parse(todoList);
+          setTodos(json)
+      }
+      // await removeData('todoList');
+  }
+ 
+  const deleteTodo = async () => {
+  
+    const todoList = await getData('todoList');
+    if (todoList) {
+        const json = JSON.parse(todoList);
+        
+        json.splice(index, 1)
+        storeData('todoList', JSON.stringify([...json]));
+    }
+    }
+
+  useFocusEffect(
+    useCallback(() => {
+        retrieveData();
+    }, [])
+);
+ 
+
+//   // const submitHandler = (text:any) => {
+
+//   //   if(text.length > 3) {
+//   //   setTodos((prevTodos) => {
+//   //   return[
+//   //   {text: text,key: Math.random().toString()},
+//   //   ...prevTodos
+//   //   ];
+//   // });
+
+// }else {
+//   Alert.alert('OOPS!', 'Todos must be over 3 chars long', [
+//     {text:'Ok', onPress:() => console.log('alert closed')}
+//   ]);
+// }
+
+//  }
 
   return (
     //<SandBox/>
@@ -46,15 +75,27 @@ export default function LandingScreen() {
      <View style={styles.container}>
     <Head/>
      <View style={styles.content}>
-       < AddTodo submitHandler={submitHandler}/>
-      <View style={styles.list}>
-        <FlatList
-        data={todos}
-      renderItem={({item}) => (
-  <TodoItem item={item} pressHandler={pressHandler} />
+       < AddTodo/>
+      <View >
+      <ScrollView>
+      <View>
+        {todos && todos.map((todo: Todo, index: number) => (
+       <TouchableOpacity onPress={() => deleteTodo()}>
+           <View style ={styles.item}>
+          
+           <Text style={styles.itemText}>{todo.Title}</Text>
+           </View>
+           { <MaterialIcons style= {styles.icon} 
+           name ='delete' 
+           size={30} 
+           color={'#E13257'}  /> }
+           </TouchableOpacity>
+      ))}
+      </View>
+   </ScrollView>
+    
 
-        )}
-        />
+       
         </View>
        </View>
 
@@ -74,6 +115,26 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop:1,
-  }
-  
-})
+  },
+    item: {
+        paddingTop:10,
+        marginTop: 16,
+        borderRadius:10,
+        flexDirection:'row',
+        paddingHorizontal:16,
+        backgroundColor: '#bbb',
+        paddingBottom: 16,
+        marginBottom: -5,
+    },
+    itemText:{
+        marginRight:20,
+        fontSize:18,
+        fontFamily: 'poppins-regular',
+    },
+    icon:{
+        marginLeft: 250,
+        marginTop: -33,
+
+    }
+});
+

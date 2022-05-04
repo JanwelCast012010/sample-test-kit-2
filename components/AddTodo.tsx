@@ -1,20 +1,44 @@
 import React, {useState} from 'react';
 import {StyleSheet,Text,TextInput, Button, View } from 'react-native';
+import { getData, storeData } from '../Database/StoreData';
+import {Todo} from '../Models/Todo';
 
-export default function AddTodo ({submitHandler}:{submitHandler:any}) {
+export default function AddTodo () {
     const [text, setText] = useState('');
 
-    const changeHandler = (val:any) => {
-        setText(val);
-    } 
+    const [Title, setTitle] = useState<string>('');
+
+    const submit = async () => {
+        const data = {
+            Title: Title,
+          
+        }
+
+        const todoList = await getData('todoList');
+        if (todoList) {
+            const json = JSON.parse(todoList);
+            const mergeTodoList = [data, ...json];
+            storeData('todoList', JSON.stringify(mergeTodoList));
+            console.log(json)
+        }else {
+            storeData('todoList', JSON.stringify([data]));
+        }
+       
+    }
+
+    // const changeHandler = (val:any) => {
+    //     setText(val);
+    // } 
     return(
         <View>
             <TextInput
+            value = {Title}
             style={styles.input}
-            placeholder='new todo...'
-            onChangeText={changeHandler}
+            onChangeText= {Title => setTitle(Title)} 
+            placeholder='New todo...'
+            
             />
-            <Button onPress={() => submitHandler(text)} title='Add Todo'  color='#E13257'/> 
+            <Button onPress={() => submit()} title='Add Todo'  color='#E13257'/> 
         </View>
     )
 }

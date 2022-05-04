@@ -3,7 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { HomeParamList} from '../types';
 import TabOneScreen from "../screens/TabOneScreen";
 import TodoList from "../screens/TodoList";
-import { HomeScreen, LandingScreen } from "../screens/Home";
+import { HomeScreen } from "../screens/Home";
+import LandingScreen from "../screens/Home/LandingScreen";
 import {TouchableOpacity} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import DefaultColor from "../constants/Colors";
@@ -39,7 +40,6 @@ export default function HomeNavigator() {
       <Stack.Screen
        name="Landing"
        component={LandingScreen} 
-    
        />
     
     </Stack.Navigator>

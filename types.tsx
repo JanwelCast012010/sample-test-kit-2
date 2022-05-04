@@ -6,6 +6,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {Todo} from './Models/Todo';
 
 declare global {
   namespace ReactNavigation {
@@ -20,10 +21,9 @@ Profile: undefined;
 };
  
 export type HomeParamList= {
-Landing:undefined;
+Landing:{index: number; todo: Todo; };
 TodoList:undefined;
 TodoDetail:undefined;
-
 
 }
 export type ProfileParamList= {
